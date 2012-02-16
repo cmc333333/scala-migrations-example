@@ -28,7 +28,22 @@ dataSource.setServerName("localhost")
 dataSource.setDatabaseName("migrations")
 dataSource.setUser("migrations")
 dataSource.setPassword("migrations")
+val migrator = new Migrator(dataSource, migrationAdapter)
 ```
+
+Next, you can call the `migrate` method, which has three parameters. The first parameter defines the type of migration
+you want to perform:
+* InstallAllMigrations - install all relevant migrations
+* RemoveAllMigrations - remove all relevant migrations
+* MigrateToVersion - adds all migrations before a particular version and drops all migrations after it
+* RollbackMigration - way to rollback a specific number of migrations from the database' current position
+The second and third parameter to the `migrate` method define where scala-migrations should be searching for
+migrations. The second parameter is a string defining the root package name where migrations can be found. If the
+third parameter is true, scala-migrations will search recursively in from the root package. The library uses something
+akin to introspection to determine which migration classes it will need to instantiate.
+
+
+*
 
 [0]: http://cmlubinski.info "CM Lubinski"
 [1]: https://github.com/cmc333333/scala-migrations-example "Github"
