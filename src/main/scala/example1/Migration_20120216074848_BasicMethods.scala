@@ -4,7 +4,7 @@ import com.imageworks.migration._
 
 class Migrate_20120216074848_BasicMethods extends Migration {
   def up() {
-    execute("CREATE TABLE dogs name varchar")
+    execute("CREATE TABLE dogs (name varchar)")
     
     addColumn("dogs", "color", VarcharType)
     addColumn("dogs", "pups", DecimalType)
@@ -21,7 +21,7 @@ class Migrate_20120216074848_BasicMethods extends Migration {
 
     removeColumn("dogs", "pups")
 
-    dropColumn("dogs", "color")
+    removeColumn("dogs", "color")
     execute("DROP TABLE dogs")
   }
 }

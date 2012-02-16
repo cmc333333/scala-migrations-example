@@ -142,8 +142,8 @@ createTable("user_data"){
 
 Adding foreign Keys and constraints after column creation uses a slightly different syntax. Instead of saying 
 something like `addForeignKey("account.user", "user.id")`, you must use the `on()` and `references()` methods. For a 
-foreign key, this means `addForeignKey(on("account", "user"), references("user", "id"))`. For a constraint, it would 
-be something like `addCheck(on("account", "balance"), "balance >= 0")`.
+foreign key, this means `addForeignKey(on("account" -> "user"), references("user" -> "id"))`. For a constraint, it 
+would be something like `addCheck(on("account" -> "balance"), "balance >= 0")`.
 
 ## Analysis
 

@@ -11,9 +11,9 @@ object Main {
     val migrationAdapter = DatabaseAdapter.forVendor(vendor, None)
     val dataSource = new PGSimpleDataSource()
     dataSource.setServerName("localhost")
-    dataSource.setDatabaseName("migrations")
-    dataSource.setUser("migrations")
-    dataSource.setPassword("migrations")
+    dataSource.setDatabaseName("migration")
+    dataSource.setUser("migration")
+    dataSource.setPassword("migration")
 
     new Migrator(dataSource, migrationAdapter)
   }
