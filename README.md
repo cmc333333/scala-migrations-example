@@ -42,9 +42,50 @@ migrations. The second parameter is a string defining the root package name wher
 third parameter is true, scala-migrations will search recursively in from the root package. The library uses something
 akin to introspection to determine which migration classes it will need to instantiate.
 
+## Migration Overview
 
-*
+Naming: Migration classes must follow a simple naming convention: 
+```Migrate_\d+_[a-zA-Z0-9]*```
+The number represents the migration "version," that is, the unique identifier for this migration. It is suggested that
+you just use the current data and time, as provided by something like the date command:
+```date -u +%Y%m%d%H%M%S```
+The string following the version number generally conveys something brief about the migration, such as "ContactsTable"
+or "EncryptedUserNames."
+
+Every migration class must inherit from Migration and must implement the abstract `up()` and `down()` methods. The
+`up()` method is called when a migration is applied; the `down()` when the migration is reversed. There are no
+constraints on what you place inside these methods; they could do nothing or they could make some sophisticated
+connection to an external service.
+
+## Basic Migration Methods
+
+* execute - Lowest common denominator, just execute this SQL string
+* addColumn - Add a column of a given [type][3]
+* alterColumn - Alter a column to match a given type (or other column options, see below)
+* addIndex - Add an index to a column (or set of columns)
+
+* removeIndex
+* removeColumn
+
+There are similar methods for adding and removing foreign keys, constrains, and permissions.
+
+## Tables
+
+The core method here is `createTable()`, which takes a tablename and a closure as its parameters:
+
+
+* dropTable
+* on
+* references
+* withPreparedStatement
+* withResultSet
+* createTable
+
+Column options
+index options
+
 
 [0]: http://cmlubinski.info "CM Lubinski"
 [1]: https://github.com/cmc333333/scala-migrations-example "Github"
 [2]: http://code.google.com/p/scala-migrations/
+[3]: http://code.google.com/p/scala-migrations/source/browse/src/main/scala/com/imageworks/migration/SqlType.scala
