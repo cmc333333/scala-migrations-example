@@ -48,12 +48,14 @@ akin to introspection to determine which migration classes it will need to insta
 
 Naming: Migration classes must follow a simple naming convention: 
 
-```Migrate_\d+_[a-zA-Z0-9]*```
+```
+Migrate_\d+_[a-zA-Z0-9]*
+```
 
 The number represents the migration "version," that is, the unique identifier for this migration. It is suggested that
 you just use the current data and time, as provided by something like the date command:
 
-```date -u +%Y%m%d%H%M%S```
+`date -u +%Y%m%d%H%M%S`
 
 The string following the version number generally conveys something brief about the migration, such as "ContactsTable"
 or "EncryptedUserNames."
