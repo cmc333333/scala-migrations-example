@@ -2,9 +2,9 @@
 
 [CM Lubinski][0]
 
-02/16/12
+Presented at [CASE 02/16/12][1]
 
-[Github][1]
+[Github][2]
 
 ---
 
@@ -16,7 +16,7 @@
 ## Migrator
 
 First, the Migrator must be set up to use the right database connection. According to their project page,
-[scala-migrations][2] runs on Derby, MySQL, Oracle, and PostgreSQL. Here's a simple Postgres setup:
+[scala-migrations][3] runs on Derby, MySQL, Oracle, and PostgreSQL. Here's a simple Postgres setup:
 
 ```scala
 import org.postgresql.ds.PGSimpleDataSource
@@ -96,7 +96,7 @@ There is also a corresponding `dropTable()` method in the Migration class.
 
 ##  Options
 
-The library includes the concept of a list of "[Options][4]" when creating or modifying columns, indexes, 
+The library includes the concept of a list of "[Options][5]" when creating or modifying columns, indexes, 
 constraints, etc. These are generally added to the list of parameters for the method used.
 
 ### Column Options
@@ -154,7 +154,8 @@ though, with an unfortunately over-reliance on Java sql constructs (including pr
 which make certain operations needlessly verbose.
 
 [0]: http://cmlubinski.info "CM Lubinski"
-[1]: https://github.com/cmc333333/scala-migrations-example "Github"
-[2]: http://code.google.com/p/scala-migrations/
-[3]: http://code.google.com/p/scala-migrations/source/browse/src/main/scala/com/imageworks/migration/SqlType.scala
-[4]: http://code.google.com/p/scala-migrations/source/browse/src/main/scala/com/imageworks/migration/Options.scala
+[1]: http://www.meetup.com/chicagoscala/events/46944622/
+[2]: https://github.com/cmc333333/scala-migrations-example "Github"
+[3]: http://code.google.com/p/scala-migrations/
+[4]: http://code.google.com/p/scala-migrations/source/browse/src/main/scala/com/imageworks/migration/SqlType.scala
+[5]: http://code.google.com/p/scala-migrations/source/browse/src/main/scala/com/imageworks/migration/Options.scala
